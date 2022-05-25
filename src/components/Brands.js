@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect,useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Brands() {
 const [brandList, setbrandList] = useState([]);
@@ -19,14 +20,17 @@ const getData = () => {
   console.log(brandList);
   let brands=brandList.map(brand=>{
     return <>
-     <div class="p-4 md:w-1/3">
+    <div class="p-4 md:w-1/3">
+    <Link to={`/brands/${brand.brand_slug}`}> 
           <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-            <div class="flex items-center mb-3">
+            <div class="mb-3 text-center capitalize">
               
               <h2 class="text-gray-900 text-lg title-font font-medium">{brand.brand_name}</h2>
+              <h4 class="text-gray-900 text-lg title-font font-medium">{brand.device_count} devices</h4>
             </div>
             
           </div>
+          </Link>
         </div>
   </>
   });
