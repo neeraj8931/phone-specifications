@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useParams } from "react-router-dom";
 
+
 export default function BrandModals() {
     let parameter=useParams();
     console.log(parameter.id);
+    const [brand, setBrand] = useState();
     const [modals, setModals] = useState([]);
     const getData = () => {
         fetch(`https://api-mobilespecs.azharimm.site/v2/brands/${parameter.id}`)
@@ -11,6 +13,7 @@ export default function BrandModals() {
           .then((res) => {
             console.log(res.data);
             setModals(res.data.phones);
+            setBrand(res.data.title)
           })
       }
 
@@ -28,21 +31,25 @@ export default function BrandModals() {
         </div>
         <h2 class="text-xl font-medium title-font text-gray-900 mt-5">{phone.phone_name}</h2>
         <p>{phone.brand}</p>
+        <p>{phone.device_count}</p>
         </Link>
       </div>
         </>
     })
         console.log(modals);
       
-    
 
   return (
       <>
-    <div>BrandModals</div>
+    
     <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+               <h2 class="text-5xl text-yellow-500 tracking-widest font-medium title-font mb-1">{brand}</h2>
+            </div>
     <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 justify-center">
-     {showmodals}
+      {modals.length>0 && showmodals}
+     {modals.length===0 && <h3 className='text-center text-5xl text-yellow-500'>Loading...</h3>}
     </div>
   </div>
 </section>

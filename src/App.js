@@ -4,7 +4,7 @@ import Latest from './components/Latest';
 
 function App() {
   return (
-    <div className='container mx-auto bg-green-100'>
+    <div className='container mx-auto '>
           <Hero />
           <Latest />
     </div>

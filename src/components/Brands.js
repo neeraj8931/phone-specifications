@@ -40,10 +40,11 @@ const getData = () => {
                 <section class="text-gray-600 body-font">
                     <div class="container px-5 py-24 mx-auto">
                         <div class="flex flex-col text-center w-full mb-20">
-                            <h2 class="text-xs text-yellow-500 tracking-widest font-medium title-font mb-1">Brands</h2>
+                            <h2 class="text-5xl text-yellow-500 tracking-widest font-medium title-font mb-1">Brands</h2>
                         </div>
-                        <div class="flex flex-wrap -m-4">
-                       {brands}
+                        <div class="flex flex-wrap -m-4 text-center">
+                       {brandList.length>0 && brands}
+                       {brandList.length===0 && <h4 className='text-center text-5xl text-yellow-500'>Loading...</h4>}
                        </div>
                     </div>
                 </section>
